@@ -11,11 +11,12 @@
     <hr><br>
 <script>
     function verIMC(nombre, peso_kg, altura_cm) {
-        var altura_cm = altura_cm / 100;
-        var imc = peso_kg / (altura_cm * altura_cm);
-        document.write(`El IMC de ${nombre} es ${imc}.<br>`);
+        let estado = "";
+        altura_cm = altura_cm / 100;
+        let imc = peso_kg / (altura_cm * altura_cm);
+        document.write(`El IMC de ${nombre} es ${Math.round(imc * 100) / 100}.<br>`);
         if (imc < 18.5) {
-            var estado = "muy delgado";
+            estado = "muy delgado";
         } else if (imc > 25 && imc < 30) {
             estado = "´por encima de los valores normales.";
         } else if (imc >= 30) {
