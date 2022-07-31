@@ -8,22 +8,41 @@
 </head>
 <body>
     <h1>Diferencia de edad</h1>
+    <form id="miForm" onsubmit="return false">
+        <label for="mi_edad">¿Cuál es tu edad? </label>
+        <input type="text" name="mi_edad" id="mi_edad">
+        <br><br>
+        <label for="su_edad">¿Edad de la persona a comparar? </label>
+        <input type="text" name="su_edad" id="su_edad">
+        <br><br>
+        <label for="quien">¿Quién es la otra persona? </label>
+        <input type="text" name="quien" id="quien">
+        <br><br>
+        <button id="boton" onclick="difEdad();">Comparar</button>
+        <br><br>
+    </form>
     <hr><br>
+    <div id="resultado"></div>
 <script>
-    function difEdad(mi_edad,su_edad,quien) {
+    function difEdad() {
+        let mi_edad = document.getElementById("mi_edad").value;
+        let su_edad = document.getElementById("su_edad").value;
+        let quien = document.getElementById("quien").value;
+        let form = document.getElementById("miForm");
+        let resultado = document.getElementById("resultado");
         let estado = "";
-        document.write(`La diferencia de edad entre ${quien} (${su_edad}) y yo (${mi_edad}) es de ${su_edad - mi_edad} años.<br>`);
-        if (su_edad - mi_edad < 0) {
+        let diferencia = su_edad - mi_edad;
+        if (diferencia < 0) {
             estado = "menor";
-        } else if (su_edad - mi_edad > 0) {
+        } else if (diferencia > 0) {
             estado = "mayor";
         } else {
             estado = "de la misma edad";
-        };
-        document.write(`Por lo tanto, ${quien} es ${estado} que yo.<br>`);
+        }
+        resultado.innerHTML = `La diferencia de edad entre ${quien} (${su_edad}) y yo (${mi_edad}) es de ${diferencia} años.<br>Por lo tanto, ${quien} es ${estado} que yo.<br>`;
+        // Limpiar inputs
+        form.reset();
     }
-
-    difEdad(28,20, "mi hermano");
 </script>
 </body>
 </html>

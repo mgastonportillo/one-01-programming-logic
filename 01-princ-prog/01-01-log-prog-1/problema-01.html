@@ -17,30 +17,31 @@
     <br><hr>
     <h1 id="tabla-del"></h1>
     <div id="tabla"></div>
-</body>
+
 <script>
     function verTabla() {
         // Ver la tabla de un número racional
-        let num = document.getElementById("num");
+        let num = document.getElementById("num").value;
         let titulo = document.getElementById("tabla-del");
         let tabla = document.getElementById("tabla");
-        if (num.value === "") {
+        if (num === "") {
             // Si el campo está vacío, pedir al usuario que ingrese un número
             alert("Por favor, ingrese un número.");
-        } else if (num.value.trim() == "" || isNaN(num.value) == true) {
+        } else if (num.trim() == "" || isNaN(num) == true) {
             // Si el valor ingresado no es un número, avisar al usuario
-            alert(`${num.value} no es un número. Por favor, ingrese un número.`);
+            alert(`${num} no es un número. Por favor, ingrese un número.`);
         } else {
-            titulo.innerHTML= `Tabla del ${num.value}`;
+            titulo.innerHTML = `Tabla del ${num}`;
             // Limpiar tabla existente
             tabla.innerHTML = "";
             // Crear tabla del número ingresado
             for (let i = 1; i <= 10; i++) {
-                    tabla.innerHTML += `${num.value} x ${i} = ${num.value * i}<br>`;
+                    tabla.innerHTML += `${num} x ${i} = ${Math.round((num * i) * 100) / 100}<br>`;
             }
             // Limpiar input
             num.value = "";
         }
     }
 </script>
+</body>
 </html>
