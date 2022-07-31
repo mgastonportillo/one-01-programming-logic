@@ -7,6 +7,22 @@
     <title>Problema #3</title>
 </head>
 <body>
-    
+    <h1>Diferencia de edad</h1>
+    <hr><br>
+<script>
+    function difEdad(mi_edad,su_edad,quien) {
+        document.write(`La diferencia de edad entre ${quien} (${su_edad}) y yo (${mi_edad}) es de ${su_edad - mi_edad} años.<br>`);
+        if (su_edad - mi_edad < 0) {
+            var estado = "menor";
+        } else if (su_edad - mi_edad > 0) {
+            var estado = "mayor";
+        } else {
+            var estado = "de la misma edad";
+        };
+        document.write(`Por lo tanto, ${quien} es ${estado} que yo.<br>`);
+    }
+
+    difEdad(28,20, "mi hermano")
+</script>
 </body>
 </html>
