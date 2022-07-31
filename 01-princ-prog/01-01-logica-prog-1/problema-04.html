@@ -7,6 +7,26 @@
     <title>Problema #3</title>
 </head>
 <body>
-    
+    <h1>Calcular IMC</h1>
+    <hr><br>
+<script>
+    function verIMC(nombre, peso_kg, altura_cm) {
+        var altura_cm = altura_cm / 100;
+        var imc = peso_kg / (altura_cm * altura_cm);
+        document.write(`El IMC de ${nombre} es ${imc}.<br>`);
+        if (imc < 18.5) {
+            var estado = "muy delgado";
+        } else if (imc > 25 && imc < 30) {
+            estado = "´por encima de los valores normales.";
+        } else if (imc >= 30) {
+            estado = "en un estado de obesidad";
+        } else {
+            estado = "entre los valores normales";
+        }
+        document.write(`El IMC de ${nombre} nos muestra que está ${estado}.<br>`)
+    }
+
+    verIMC("Okabe",59,177);
+</script>
 </body>
 </html>
