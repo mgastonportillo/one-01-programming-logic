@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problema #9</title>
+</head>
+<body>
+    <p><a href="/index.html">Volver</a></p>
+    <h1>Años en los que hubo mundiales de la FIFA</h1>
+    <form id="miForm" onsubmit="return false">
+        <label for="num">Año límite para calcular: </label>
+        <input type="text" name="num" id="num">
+        <br><br>
+        <button id="boton" onclick="calcular();">Calcular</button>
+    </form>
+    <br><hr><br>
+    <div id="resultado"></div>
+<script>
+    function calcular() {
+        let form = document.getElementById("miForm");
+        let num = document.getElementById("num");
+        let resultado = document.getElementById("resultado");
+        let anhoMundial = 1930;
+        resultado.innerHTML = `Años en los que hubo mundiales, hasta el año ${num.value}:<br><br>`;
+        while (anhoMundial < num.value) {
+            resultado.innerHTML += `${anhoMundial}<br>`;
+            anhoMundial  += 4
+        }
+        form.reset();
+    }
+</script>
+</body>
+</html>

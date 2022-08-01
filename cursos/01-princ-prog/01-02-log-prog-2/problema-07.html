@@ -8,18 +8,32 @@
 </head>
 <body>
     <p><a href="/index.html">Volver</a></p>
-    <h1>Título del problema</h1>
-    <div>
-        <label for="num">Algo:</label>
-        <input type="text" name="num" id="num">
+    <h1>¿Puedes conducir?</h1>
+    <form id="miForm" onsubmit="return false">
+        <label for="edad">¿Tienes 18 años o más? (y/n)</label>
+        <input type="text" name="edad" id="edad">
         <br><br>
-        <button id="boton" onclick="verTabla();">Botón</button>
-    </div>
-    <br><hr>
-    <div id="algo"></div>
+        <label for="licencia">¿Tienes licencia de conducir? (y/n)</label>
+        <input type="text" name="licencia" id="licencia">
+        <br><br>
+        <button id="boton" onclick="verificar();">Verificar</button>
+    </form>
+    <br><hr><br>
+    <div id="resultado"></div>
 
 <script>
-    
+    function verificar() {
+        const form = document.getElementById("miForm");
+        let resultado = document.getElementById("resultado");
+        let edad = document.getElementById("edad").value;
+        let lic = document.getElementById("licencia").value;
+        if (edad === "y" && lic === "y") {
+            resultado.innerHTML = "Sí puedes conducir.";
+        } else {
+            resultado.innerHTML = "No puedes conducir.";
+        }
+        form.reset();
+    }
 </script>
 </body>
 </html>

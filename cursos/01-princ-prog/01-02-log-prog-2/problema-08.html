@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problema #8</title>
+</head>
+<body>
+    <p><a href="/index.html">Volver</a></p>
+    <h1>Juego de lotería: Adivine el número</h1>
+    <form id="miForm" onsubmit="return false">
+        <label for="num">¡Juguemos a la lotería! Ingrese el número máximo a sortear: </label>
+        <input type="text" name="num" id="num">
+        <br><br>
+        <button id="boton" onclick="jugarLoteria();">Sortear</button>
+    </form>
+    <br>
+    <p style="color: red">---Arreglar---</p>
+    <br><hr><br>
+    <div id="resultado"></div>
+
+<script>   
+    function jugarLoteria() {
+        const form = document.getElementById("miForm");
+        const resultado = document.getElementById("resultado");
+        let num = parseInt(document.getElementById("num").value);
+        let numeroGanador = Math.floor(Math.random() * num);
+        if (numeroGanador === num) {
+            resultado.innerHTML = `¡Acertaste! ${numGanador} es el número correcto.`;
+        } else {
+            resultado.innerHTML = `${num} no es el número correcto. Intenta nuevamente.`;
+        }
+        form.reset();
+    }
+</script>
+</body>
+</html>
