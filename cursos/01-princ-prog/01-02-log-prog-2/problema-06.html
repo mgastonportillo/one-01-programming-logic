@@ -8,18 +8,29 @@
 </head>
 <body>
     <p><a href="/index.html">Volver</a></p>
-    <h1>Título del problema</h1>
-    <div>
-        <label for="num">Algo:</label>
+    <h1>Juego de adivinación</h1>
+    <form id="miForm" onsubmit="return false">
+        <label for="num">Intente adivinar el número secreto: </label>
         <input type="text" name="num" id="num">
         <br><br>
-        <button id="boton" onclick="verTabla();">Botón</button>
-    </div>
-    <br><hr>
-    <div id="algo"></div>
+        <button id="boton" onclick="adivinar();">Adivinar</button>
+    </form>
+    <br><hr><br>
+    <div id="mensaje"></div>
 
 <script>
-    
+    function adivinar() {
+        let form = document.getElementById("miForm");
+        let num = parseInt(document.getElementById("num").value);
+        let mensaje = document.getElementById("mensaje");
+        let numSecreto = 777;
+        if (numSecreto === num) {
+            mensaje.innerHTML = `¡Felicitaciones, ganaste <b style="color:white; background-color: green;">777</b> dólares! Te serán entregados en una linea de tiempo aleatoria.`;
+        } else {
+            mensaje.innerHTML = `No, ${num} no es el número secreto. Intentelo nuevamente.<br>Dicen que el 7 es el número de la suerte.`;
+        }
+        form.reset();
+    }
 </script>
 </body>
 </html>
