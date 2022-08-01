@@ -7,27 +7,45 @@
     <title>Problema #4</title>
 </head>
 <body>
+    <p><a href="/index.html">Volver</a></p>
     <h1>Calcular IMC</h1>
+    <form id="miForm" onsubmit="return false">
+        <label for="altura">¿Cuál es tu altura (en centímetros)? </label>
+        <input type="text" name="altura" id="altura">
+        <br><br>
+        <label for="peso">¿Cuál es tu peso? </label>
+        <input type="text" name="peso" id="peso">
+        <br><br>
+        <label for="nombre">¿Cuál es tu nombre? </label>
+        <input type="text" name="nombre" id="nombre">
+        <br><br>
+        <button id="boton" onclick="verIMC();">Calcular</button>
+        <br><br>
+    </form>
     <hr><br>
+    <div id="resultado"></div>
 <script>
-    function verIMC(nombre, peso_kg, altura_cm) {
+    function verIMC() {
+        let form = document.getElementById("miForm");
+        let altura = document.getElementById("altura").value;
+        let peso = document.getElementById("peso").value;
+        let nombre = document.getElementById("nombre").value;
+        let resultado = document.getElementById("resultado");
         let estado = "";
-        altura_cm = altura_cm / 100;
-        let imc = peso_kg / (altura_cm * altura_cm);
-        document.write(`El IMC de ${nombre} es ${Math.round(imc * 100) / 100}.<br>`);
+        altura = altura / 100;
+        let imc = peso / (altura * altura);
         if (imc < 18.5) {
             estado = "muy delgado";
         } else if (imc > 25 && imc < 30) {
-            estado = "´por encima de los valores normales.";
+            estado = "por encima de los valores normales.";
         } else if (imc >= 30) {
             estado = "en un estado de obesidad";
         } else {
             estado = "entre los valores normales";
         }
-        document.write(`El IMC de ${nombre} nos muestra que está ${estado}.<br>`)
+        resultado.innerHTML = `El IMC de ${nombre} es ${Math.round(imc * 100) / 100}.<br>El IMC de ${nombre} nos muestra que está ${estado}.<br>`
+        form.reset();
     }
-
-    verIMC("Okabe",59,177);
 </script>
 </body>
 </html>
