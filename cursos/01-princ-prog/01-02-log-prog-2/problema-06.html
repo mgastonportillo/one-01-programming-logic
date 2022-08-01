@@ -10,7 +10,7 @@
     <p><a href="/index.html">Volver</a></p>
     <h1>Juego de adivinación</h1>
     <form id="miForm" onsubmit="return false">
-        <label for="num">Intente adivinar el número secreto: </label>
+        <label for="num">Intente adivinar el número mágico<br>Tip: Se encuentra entre 0 y 10: </label>
         <input type="text" name="num" id="num">
         <br><br>
         <button id="boton" onclick="adivinar();">Adivinar</button>
@@ -23,11 +23,11 @@
         let form = document.getElementById("miForm");
         let num = parseInt(document.getElementById("num").value);
         let mensaje = document.getElementById("mensaje");
-        let numSecreto = 777;
+        let numSecreto = Math.round(Math.random() * 10);
         if (numSecreto === num) {
-            mensaje.innerHTML = `¡Felicitaciones, ganaste <b style="color:white; background-color: green;">777</b> dólares! Te serán entregados en una linea de tiempo aleatoria.`;
+            mensaje.innerHTML = `¡Felicitaciones, ganaste <b style="color:red;">${numSecreto} Anillos de Poder</b>! Te serán entregados por Celebrimbor en persona.`;
         } else {
-            mensaje.innerHTML = `No, ${num} no es el número secreto. Intentelo nuevamente.<br>Dicen que el 7 es el número de la suerte.`;
+            mensaje.innerHTML = `No, ${num} no es el número secreto. Intentelo nuevamente.<br>`;
         }
         form.reset();
     }
