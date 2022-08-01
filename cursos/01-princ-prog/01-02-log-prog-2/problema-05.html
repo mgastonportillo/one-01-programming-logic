@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problema #5</title>
+</head>
+<body>
+    <p><a href="/index.html">Volver</a></p>
+    <h1>Calcular puntos de un equipo de fútbol</h1>
+    <form id="miForm" onsubmit="return false">
+        <label for="victorias">Cantidad de victorias: </label>
+        <input type="text" name="victorias" id="victorias">
+        <br><br>
+        <label for="empates">Cantidad de empates: </label>
+        <input type="text" name="empates" id="empates">
+        <br><br>
+        <button id="boton" onclick="calcularPuntos();">Calcular</button>
+    </form>
+    <br><hr><br>
+    <div id="resultado"></div>
+
+<script>
+    function calcularPuntos() {
+        const form = document.getElementById("miForm");
+        let resultado = document.getElementById("resultado");
+        let victorias = parseInt(document.getElementById("victorias").value);
+        let empates = parseInt(document.getElementById("empates").value);
+        let total = (victorias * 3) + empates
+        resultado.innerHTML = `El total de puntos de tu equipo es de ${total}`;
+        form.reset();
+    }
+</script>
+</body>
+</html>
