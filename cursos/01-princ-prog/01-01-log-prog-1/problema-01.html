@@ -11,7 +11,7 @@
     <h1>Tabla de multiplicar</h1>
     <form id="miForm" onsubmit="return false">
         <label for="num">Ingresa un número:</label>
-        <input type="text" name="num" id="num">
+        <input type="text" name="num" id="num" placeholder="Ejemplo: 3.14">
         <br><br>
         <button id="boton" onclick="verTabla();">Ver tabla de multiplicar del número ingresado</button>
     </form>
@@ -20,25 +20,27 @@
     <div id="tabla"></div>
 
 <script>
-    function verTabla() {
-        // Ver la tabla de un número racional
-        let form = document.getElementById("miForm");
-        let num = document.getElementById("num").value;
-        let titulo = document.getElementById("tabla-del");
-        let tabla = document.getElementById("tabla");
+    const form = document.getElementById("miForm");
+    const titulo = document.getElementById("tabla-del");
+    const tabla = document.getElementById("tabla");
+
+    
+    function verTabla() { // Ver la tabla de un número racional
+        const num = document.getElementById("num").value;
+        // Limpiar tabla existente
+        titulo.innerHTML = "";
+        tabla.innerHTML = "";
         if (num.trim() === "") {
-            // Si el campo está vacío, pedir al usuario que ingrese un número
+            // Si el campo está vacío o sólo contiene espacios, pedir al usuario que ingrese un número
             alert("Por favor, ingrese un número.");
-        } else if (num.trim() === "" || isNaN(num) === true) {
-            // Si el valor ingresado no es un número, avisar al usuario
+        } else if (isNaN(num) === true) {
+            // Si el valor ingresado no es un número, pedir al usuario que intente nuevamente
             alert(`${num} no es un número. Por favor, ingrese un número.`);
         } else {
-            titulo.innerHTML = `Tabla del ${num}`;
-            // Limpiar tabla existente
-            tabla.innerHTML = "";
             // Crear tabla del número ingresado
+            titulo.innerHTML = `Tabla del ${num}`;
             for (let i = 1; i <= 10; i++) {
-                    tabla.innerHTML += `${num} x ${i} = ${Math.round((num * i) * 100) / 100}<br>`;
+                tabla.innerHTML += `${num} x ${i} = ${Math.round((num * i) * 100) / 100}<br>`;
             }
             // Limpiar input
             form.reset();

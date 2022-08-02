@@ -8,26 +8,40 @@
 </head>
 <body>
     <p><a href="/index.html">Volver</a></p>
-    <h1>Juego de lotería: Adivine el número</h1>
+    <h1>Juego de lotería</h1>
     <form id="miForm" onsubmit="return false">
-        <label for="num">¡Juguemos a la lotería! Ingrese el número máximo a sortear: </label>
+        <label for="num">¡Juguemos a la lotería!<br><br>Ingrese el número máximo a sortear: </label>
         <input type="text" name="num" id="num">
+        <br><br>
+        <label for="numElegido">Ingrese el número que cree ganador: </label>
+        <input type="text" name="numElegido" id="numElegido">
         <br><br>
         <button id="boton" onclick="jugarLoteria();">Sortear</button>
     </form>
     <br><hr><br>
     <div id="resultado"></div>
 
-<script>   
+<script>
+    const form = document.getElementById("miForm");
+    const resultado = document.getElementById("resultado");
+
     function jugarLoteria() {
-        let form = document.getElementById("miForm");
-        let resultado = document.getElementById("resultado");
-        let num = parseInt(document.getElementById("num").value);
-        let numeroGanador = Math.floor(Math.random() * (num + 1));
-        if (numeroGanador === num) {
-            resultado.innerHTML = `¡Acertaste! ${num} es el número correcto.`;
+        resultado.innerHTML = "";
+        const num = document.getElementById("num").value;
+        const numElegido = document.getElementById("numElegido").value;
+        let numGanador = Math.round(Math.random() * (parseInt(num) + 1));
+        if (num.trim() === "" || numElegido.trim() ==="") {
+            alert("Por favor, ingrese un número en ambos campos.");
+        } else if (isNaN(num) === true) {
+            alert(`${num} no es un número. Por favor, ingrese un número.`);
+        } else if (isNaN(numElegido) === true) {
+            alert(`${numElegido} no es un número. Por favor, ingrese un número.`);
         } else {
-            resultado.innerHTML = `${num} no es el número correcto. Intenta nuevamente.`;
+            if (numGanador === parseInt(numElegido)) {
+            resultado.innerHTML = `<b style="color: green;">¡Ganaste!</b> ${numElegido} es el número seleccionado.`;
+            } else {
+            resultado.innerHTML = `<b style="color: red;">¡Oops!</b> ${numElegido} no resulto ganador... intenta nuevamente.`;
+            }
         }
         form.reset();
     }

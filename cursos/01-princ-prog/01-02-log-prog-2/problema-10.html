@@ -22,9 +22,11 @@
     <div id="resultado"></div>
 
 <script>
+    const form = document.getElementById("miForm");
+    const resultado = document.getElementById("resultado");
+
     function verTabla() {
-        let form = document.getElementById("miForm");
-        let resultado = document.getElementById("resultado");
+        resultado.innerHTML = "";
         let num = parseInt(document.getElementById("num").value);
         let limite = parseInt(document.getElementById("limite").value);
         let multiplicador = 1;

@@ -10,8 +10,8 @@
     <p><a href="/index.html">Volver</a></p>
     <h1>Juego de adivinación</h1>
     <form id="miForm" onsubmit="return false">
-        <label for="num">Intente adivinar el número mágico (entre 0 y 10): </label>
-        <input type="text" name="num" id="num">
+        <label for="num">Intente adivinar el número mágico: </label>
+        <input type="text" name="num" id="num" placeholder="Entre 1 y 10">
         <br><br>
         <button id="boton" onclick="adivinar();">Adivinar</button>
     </form>
@@ -19,15 +19,24 @@
     <div id="mensaje"></div>
 
 <script>
+    const form = document.getElementById("miForm");
+    const mensaje = document.getElementById("mensaje");
+
     function adivinar() {
-        let form = document.getElementById("miForm");
-        let num = parseInt(document.getElementById("num").value);
-        let mensaje = document.getElementById("mensaje");
-        let numSecreto = Math.round(Math.random() * 10);
-        if (numSecreto === num) {
-            mensaje.innerHTML = `¡Felicitaciones, ganaste <b style="color:red;">${numSecreto} Anillo(s) de Poder</b>! Te serán entregados por Celebrimbor en persona.`;
+        const num = document.getElementById("num").value;
+        const numSecreto = Math.floor(Math.random() * (10 - 1)) + 1;
+        if (num.trim() === "") {
+            alert("Por favor, ingrese un número.");
+        } else if (parseInt(num) < 1 || parseInt(num) > 10) {
+            alert(`${num} no es un número válido. Por favor ingrese un número entre 1 y 10.`);
+        } else if (isNaN(num) === true) {
+            alert(`${num} no es un número, por favor ingrese un número.`);
         } else {
-            mensaje.innerHTML = `No, ${num} no es el número secreto. Intentelo nuevamente.<br>`;
+            if (numSecreto === parseInt(num)) {
+                mensaje.innerHTML = `¡Felicitaciones, ganaste <b style="color:red;">${numSecreto} Anillo(s) de Poder</b>! Te será(n) entregado(s) por Celebrimbor en persona.`;
+            } else {
+                mensaje.innerHTML = `No, ${num} no es el número secreto. Intentelo nuevamente.<br>`;
+            }
         }
         form.reset();
     }

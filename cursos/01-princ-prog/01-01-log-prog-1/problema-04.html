@@ -10,14 +10,14 @@
     <p><a href="/index.html">Volver</a></p>
     <h1>Calcular IMC</h1>
     <form id="miForm" onsubmit="return false">
-        <label for="altura">¿Cuál es tu altura (en centímetros)? </label>
-        <input type="text" name="altura" id="altura">
-        <br><br>
-        <label for="peso">¿Cuál es tu peso (en kilogramos)? </label>
-        <input type="text" name="peso" id="peso">
-        <br><br>
-        <label for="nombre">¿Cuál es tu nombre? </label>
+        <label for="nombre">¿Cuál es el nombre de la persona cuyo IMC quieres conocer? </label>
         <input type="text" name="nombre" id="nombre">
+        <br><br>
+        <label for="altura">¿Cuál es su altura? </label>
+        <input type="text" name="altura" id="altura" placeholder="En centímetros. Ej: 177">
+        <br><br>
+        <label for="peso">¿Cuál es su peso? </label>
+        <input type="text" name="peso" id="peso" placeholder="En kilogramos. Ej: 70">
         <br><br>
         <button id="boton" onclick="verIMC();">Calcular</button>
         <br><br>
@@ -25,9 +25,10 @@
     <hr><br>
     <div id="resultado"></div>
 <script>
+    const form = document.getElementById("miForm");
+    const resultado = document.getElementById("resultado");
+
     function verIMC() {
-        const form = document.getElementById("miForm");
-        const resultado = document.getElementById("resultado");
         const nombre = document.getElementById("nombre").value;
         const peso = document.getElementById("peso").value;
         let altura = document.getElementById("altura").value;
@@ -43,7 +44,7 @@
         } else {
             estado = "entre los valores normales";
         }
-        resultado.innerHTML = `El IMC de ${nombre} es ${Math.round(imc * 100) / 100}.<br>El IMC de ${nombre} nos muestra que está ${estado}.<br>`
+        resultado.innerHTML = `El IMC de ${nombre} es ${Math.round(imc * 100) / 100}.<br>El IMC de ${nombre} nos dice que está ${estado}.<br>`
         form.reset();
     }
 </script>

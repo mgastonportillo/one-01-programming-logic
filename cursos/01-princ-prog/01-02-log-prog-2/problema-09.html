@@ -18,16 +18,21 @@
     <br><hr><br>
     <div id="resultado"></div>
 <script>
+    const form = document.getElementById("miForm");
+    const resultado = document.getElementById("resultado");
+    let anhoMundial = 1930;
+
     function calcular() {
-        let form = document.getElementById("miForm");
-        let num = document.getElementById("num");
-        let resultado = document.getElementById("resultado");
-        let anhoMundial = 1930;
-        resultado.innerHTML = `Años en los que hubo mundiales, hasta el año ${num.value}:<br><br>`;
-        while (anhoMundial < num.value) {
+        const num = document.getElementById("num").value;
+        let contador = 0;
+        resultado.innerHTML = `Años en los que hubo mundiales, hasta el año ${num}:<br><br>`;
+        while (anhoMundial < num) {
             resultado.innerHTML += `${anhoMundial}<br>`;
-            anhoMundial  += 4
+            anhoMundial  += 4;
+            contador++;
         }
+        anhoMundial = 1930;
+        resultado.innerHTML += `<br>En total, se jugaron ${contador} mundiales hasta el año ${num}.`;
         form.reset();
     }
 </script>

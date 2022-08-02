@@ -22,12 +22,13 @@
     <div id="resultado"></div>
 
 <script>
+    const form = document.getElementById("miForm");
+    const resultado = document.getElementById("resultado");
+
     function calcularPuntos() {
-        const form = document.getElementById("miForm");
-        const resultado = document.getElementById("resultado");
         const victorias = parseInt(document.getElementById("victorias").value);
         const empates = parseInt(document.getElementById("empates").value);
-        const total = (victorias * 3) + empates
+        let total = (victorias * 3) + empates;
         resultado.innerHTML = `La puntuación total de tu equipo es de ${total} punto(s).`;
         form.reset();
     }

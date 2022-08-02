@@ -17,7 +17,7 @@
         <input type="text" name="su_edad" id="su_edad">
         <br><br>
         <label for="quien">¿Quién es la otra persona? </label>
-        <input type="text" name="quien" id="quien">
+        <input type="text" name="quien" id="quien" placeholder="Prueba con Messi...">
         <br><br>
         <button id="boton" onclick="difEdad();">Comparar</button>
         <br><br>
@@ -25,14 +25,16 @@
     <hr><br>
     <div id="resultado"></div>
 <script>
+    const form = document.getElementById("miForm");
+    const resultado = document.getElementById("resultado");
+
     function difEdad() {
         const mi_edad = document.getElementById("mi_edad").value;
         const su_edad = document.getElementById("su_edad").value;
         const quien = document.getElementById("quien").value;
-        const form = document.getElementById("miForm");
-        const resultado = document.getElementById("resultado");
         const diferencia = su_edad - mi_edad;
         let estado = "";
+        resultado.innerHTML = "";
         if (diferencia < 0) {
             estado = "menor";
         } else if (diferencia > 0) {
@@ -40,8 +42,15 @@
         } else {
             estado = "de la misma edad";
         }
-        resultado.innerHTML = `La diferencia de edad entre ${quien} (${su_edad}) y yo (${mi_edad}) es de ${diferencia} años.<br>Por lo tanto, ${quien} es ${estado} que yo.<br>`;
-        // Limpiar inputs
+        if ((quien === "Messi" || quien === "messi") && (estado === "menor")) {
+            resultado.innerHTML = `La diferencia de edad entre ${quien} (${su_edad}) y yo (${mi_edad}) es de ${diferencia} años.<br>Por lo tanto, ${quien} es ${estado} que yo.<br>Jajajaja, ¡Messi chiquito!`;
+        } else if ((quien === "Messi" || quien === "messi") && (estado === "mayor")) {
+            resultado.innerHTML = `La diferencia de edad entre ${quien} (${su_edad}) y yo (${mi_edad}) es de ${diferencia} años.<br>Por lo tanto, ${quien} es ${estado} que yo.<br>Jajajaja, ¡Messi no es tan chiquito!`;
+        } else if ((quien === "Messi" || quien === "messi") && (estado === "de la misma edad")) {
+            resultado.innerHTML = `La diferencia de edad entre ${quien} (${su_edad}) y yo (${mi_edad}) es de ${diferencia} años.<br>Por lo tanto, ${quien} es ${estado} que yo.<br>Jajajaja, ¡lo' do' somo' chiquito!`;
+        } else {
+            resultado.innerHTML = `La diferencia de edad entre ${quien} (${su_edad}) y yo (${mi_edad}) es de ${diferencia} años.<br>Por lo tanto, ${quien} es ${estado} que yo.<br>`;
+        }
         form.reset();
     }
 </script>

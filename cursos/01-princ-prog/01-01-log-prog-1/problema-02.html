@@ -8,14 +8,28 @@
 </head>
 <body>
     <p><a href="/index.html">Volver</a></p>
-    <h1>¿Alcohol o gasolina?</h1>
+    <h1>Calcular consumo gasolina</h1>
+    <form id="miForm" onsubmit="return false">
+        <label for="tanque">Tamaño del tanque:</label>
+        <input type="text" name="tanque" id="tanque" placeholder="En litros">
+        <br><br>
+        <label for="kms">Distancia recorrida:</label>
+        <input type="text" name="kms" id="kms" placeholder="En kilómetros">
+        <br><br>
+        <button id="boton" onclick="calcularConsumo();">Calcular consumo</button>
+    </form>
+    <br><hr>
+    <p id="resultado"></p>
 
 <script>
-    const tanque = 40;
-    let km = 480;
-    document.write(`El consumo de <b>gasolina</b> por km. recorrido será de ${Math.round((tanque / km) * 100) / 100} lts. si recorremos ${km} kms.<br>`);
-    km = 300;
-    document.write(`Por otra parte, con <b>alcohol</b> consumiríamos ${Math.round((tanque / km) * 100) / 100} lts. en ${km} kms. totales recorridos.<br>`);
+    function calcularConsumo() {
+        const tanque = document.getElementById("tanque").value;
+        const kms = document.getElementById("kms").value;
+        const resultado = document.getElementById("resultado");
+        const distancia = Math.round((parseInt(kms) / parseInt(tanque)) * 100) / 100;
+        const consumo = Math.round((parseInt(tanque) / parseInt(kms)) * 100) / 100;
+        resultado.innerHTML = `Por cada litro, podríamos recorrer ${distancia} kms.<br>Por cada kilometro, consumiríamos ${consumo} lts.`;
+    }
 </script>
 </body>
 </html>

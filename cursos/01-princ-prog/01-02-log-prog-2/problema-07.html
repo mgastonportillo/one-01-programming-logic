@@ -22,9 +22,10 @@
     <div id="resultado"></div>
 
 <script>
+    const form = document.getElementById("miForm");
+    const resultado = document.getElementById("resultado");
+    
     function verificar() {
-        const form = document.getElementById("miForm");
-        const resultado = document.getElementById("resultado");
         const edad = document.getElementById("edad").value;
         const lic = document.getElementById("licencia").value;
         if (edad === "y" && lic === "y") {
