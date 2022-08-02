@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problema #11</title>
+</head>
+<body>
+    <p><a href="/index.html">Volver</a></p>
+    <h1>Promedio de edades de una familia</h1>
+    <form id="miForm" onsubmit="return false">
+        <label for="miembros">Ingrese el total de miembros de su familia: </label>
+        <input type="text" name="miembros" id="miembros">
+        <br><br>
+        <button id="boton" onclick="promedioEdad();">Ver tabla de multiplicar personalizada</button>
+    </form>
+    <br><hr><br>
+    <div id="resultado"></div>
+<script>
+    function promedioEdad() {
+        let form = document.getElementById("miForm");
+        let resultado = document.getElementById("resultado");
+        let miembros = document.getElementById("miembros").value;
+        let contador = 0;
+        let sumaEdad = 0;
+        while (contador < miembros) {
+            edad = parseInt(prompt("Ingrese la edad del familiar:"));
+            sumaEdad += edad;
+            contador++;
+        }
+        resultado.innerHTML = `El total de la suma de edades de los miembros de su familia es de ${sumaEdad} años.<br>`
+        resultado.innerHTML += `Mientras que su promedio de edad es de ${Math.round((sumaEdad / contador) * 100) / 100}.`;
+        form.reset();
+    }
+</script>
+</body>
+</html>

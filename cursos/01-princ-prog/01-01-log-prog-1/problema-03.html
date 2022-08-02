@@ -26,13 +26,13 @@
     <div id="resultado"></div>
 <script>
     function difEdad() {
-        let mi_edad = document.getElementById("mi_edad").value;
-        let su_edad = document.getElementById("su_edad").value;
-        let quien = document.getElementById("quien").value;
-        let form = document.getElementById("miForm");
-        let resultado = document.getElementById("resultado");
+        const mi_edad = document.getElementById("mi_edad").value;
+        const su_edad = document.getElementById("su_edad").value;
+        const quien = document.getElementById("quien").value;
+        const form = document.getElementById("miForm");
+        const resultado = document.getElementById("resultado");
+        const diferencia = su_edad - mi_edad;
         let estado = "";
-        let diferencia = su_edad - mi_edad;
         if (diferencia < 0) {
             estado = "menor";
         } else if (diferencia > 0) {

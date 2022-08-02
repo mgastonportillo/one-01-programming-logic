@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problema #12</title>
+</head>
+<body>
+    <p><a href="/index.html">Volver</a></p>
+    <h1>Imprimir números pares, del 1 al 100</h1>
+    <hr><br>
+    <div id="imprimir"></div>
+<script>
+    function imprimirParesCien() {
+        let imprimir = document.getElementById("imprimir");
+        let contador = 1;
+        while (contador <= 100) {
+            if (contador % 2 === 0) {
+                document.write(`${contador}<br>`);
+                contador++;
+            } else {
+                contador++;
+            }
+        }
+    }
+
+    imprimirParesCien();
+
+</script>
+</body>
+</html>

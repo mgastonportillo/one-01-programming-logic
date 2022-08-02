@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problema #6</title>
+</head>
+<body>
+    <p><a href="/index.html">Volver</a></p>
+    <h1>Juego de adivinación con mejoras</h1>
+    <div>
+        <ul>
+            <li>Intente adivinar el número secreto</li>
+            <li>Tendrá un máximo de 3 (tres) intentos</li>
+        </ul>
+    </div><br>
+    <button id="boton" onclick="jugar();">Jugar</button>
+    <br><br><hr><br>
+    <div id="mensaje"></div>
+
+<script>
+    function jugar() {
+        const mensaje = document.getElementById("mensaje");
+        const numSecreto = Math.round(Math.random() * 10);
+        const intentos = 3;
+        let contador = 1;
+        let numLanzado = 0;
+        while (contador <= intentos) {
+            numLanzado = parseInt(prompt("Seleccione un número del 1 al 10: "));
+            if (numSecreto === numLanzado) {
+                alert(`¡Usted acertó! En su intento número ${contador}. El número secreto era ${numLanzado}.`);
+                break;
+            } else {
+                alert(`Intento ${contador}: Usted falló. Intente nuevamente.`);
+                contador++;
+            }
+        }
+        if (contador <= intentos) {
+            mensaje.innerHTML = `¡Felicidades! Acertó en su intento #${contador}. El número secreto era ${numSecreto}.`;
+        } else {
+            mensaje.innerHTML = "¡Felicidades! Nadie es peor que vos.";
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problema #10</title>
+</head>
+<body>
+    <p><a href="/index.html">Volver</a></p>
+    <h1>Tabla de multiplicar personalizada</h1>
+    <form id="miForm" onsubmit="return false">
+        <label for="num">Número del cuál quieres ver la tabla: </label>
+        <input type="text" name="num" id="num">
+        <br><br>
+        <label for="limite">Número límite hasta el cual multiplicarlo: </label>
+        <input type="text" name="limite" id="limite">
+        <br><br>
+        <button id="boton" onclick="verTabla();">Ver tabla de multiplicar personalizada</button>
+    </form>
+    <br><hr><br>
+    <div id="resultado"></div>
+
+<script>
+    function verTabla() {
+        let form = document.getElementById("miForm");
+        let resultado = document.getElementById("resultado");
+        let num = parseInt(document.getElementById("num").value);
+        let limite = parseInt(document.getElementById("limite").value);
+        let multiplicador = 1;
+        while (limite >= 1) {
+            resultado.innerHTML += `${num} x ${multiplicador} = ${num * multiplicador}<br>`;
+            limite--;
+            multiplicador++;
+        }
+        form.reset();
+    }
+</script>
+</body>
+</html>

@@ -24,9 +24,9 @@
 <script>
     function verificar() {
         const form = document.getElementById("miForm");
-        let resultado = document.getElementById("resultado");
-        let edad = document.getElementById("edad").value;
-        let lic = document.getElementById("licencia").value;
+        const resultado = document.getElementById("resultado");
+        const edad = document.getElementById("edad").value;
+        const lic = document.getElementById("licencia").value;
         if (edad === "y" && lic === "y") {
             resultado.innerHTML = "Sí puedes conducir.";
         } else {

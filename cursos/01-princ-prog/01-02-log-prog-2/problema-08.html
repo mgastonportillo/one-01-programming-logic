@@ -15,19 +15,17 @@
         <br><br>
         <button id="boton" onclick="jugarLoteria();">Sortear</button>
     </form>
-    <br>
-    <p style="color: red">---Arreglar---</p>
     <br><hr><br>
     <div id="resultado"></div>
 
 <script>   
     function jugarLoteria() {
-        const form = document.getElementById("miForm");
-        const resultado = document.getElementById("resultado");
+        let form = document.getElementById("miForm");
+        let resultado = document.getElementById("resultado");
         let num = parseInt(document.getElementById("num").value);
-        let numeroGanador = Math.floor(Math.random() * num);
+        let numeroGanador = Math.floor(Math.random() * (num + 1));
         if (numeroGanador === num) {
-            resultado.innerHTML = `¡Acertaste! ${numGanador} es el número correcto.`;
+            resultado.innerHTML = `¡Acertaste! ${num} es el número correcto.`;
         } else {
             resultado.innerHTML = `${num} no es el número correcto. Intenta nuevamente.`;
         }

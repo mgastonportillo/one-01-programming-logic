@@ -26,14 +26,14 @@
     <div id="resultado"></div>
 <script>
     function verIMC() {
-        let form = document.getElementById("miForm");
+        const form = document.getElementById("miForm");
+        const resultado = document.getElementById("resultado");
+        const nombre = document.getElementById("nombre").value;
+        const peso = document.getElementById("peso").value;
         let altura = document.getElementById("altura").value;
-        let peso = document.getElementById("peso").value;
-        let nombre = document.getElementById("nombre").value;
-        let resultado = document.getElementById("resultado");
         let estado = "";
         altura = altura / 100;
-        let imc = peso / (altura * altura);
+        const imc = peso / (altura * altura);
         if (imc < 18.5) {
             estado = "muy delgado";
         } else if (imc > 25 && imc < 30) {
