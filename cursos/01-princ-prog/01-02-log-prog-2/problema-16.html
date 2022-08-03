@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problema #16</title>
+</head>
+<body>
+    <p><a href="/index.html">Volver</a></p>
+    <h1>Recetario sin ingredientes repetidos</h1>
+    <form id="miForm" onsubmit="return false">
+        <label for="num">Cantidad de ingredientes a ingresar: </label>
+        <input type="text" name="num" id="num">
+        <br><br>    
+        <button id="boton" onclick="agregar();">Agregar ingrediente</button>
+    </form>
+    <br><hr><br>
+    <div id="mensaje"></div>
+
+<script>
+    const form = document.getElementById("miForm");
+    const mensaje = document.getElementById("mensaje");
+
+    function agregar() {
+        const num = document.getElementById("num").value;
+        let ingredientes = [];
+        let contador = 1;
+        while(contador <= num) {
+            let ingrediente = prompt(`Informe el ingrediente #${contador}:`);
+            let existe = false;
+            for (let posicion = 0; posicion < contador; posicion++) {
+                if (ingredientes[posicion] == ingrediente) {
+                    existe = true;
+                    alert("Ingrediente repetido");
+                    break;
+                }
+            }
+            if (existe == false) {
+                ingredientes.push(ingrediente);
+                contador++;
+            }
+        }
+        for (let i = 0; i < ingredientes.length; i++) {
+            mensaje.innerHTML += `${i + 1}. ${ingredientes[i]}<br>`;
+        }
+        mensaje.innerHTML += `<br>El total de ingredientes ingresados es ${ingredientes.length}.`; 
+        form.reset();
+    }
+</script>
+</body>
+</html>

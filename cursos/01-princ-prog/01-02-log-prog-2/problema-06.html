@@ -24,7 +24,7 @@
 
     function adivinar() {
         const num = document.getElementById("num").value;
-        const numSecreto = Math.floor(Math.random() * (10 - 1)) + 1;
+        const numSecreto = Math.floor(Math.random() * (11 - 1)) + 1;
         if (num.trim() === "") {
             alert("Por favor, ingrese un número.");
         } else if (parseInt(num) < 1 || parseInt(num) > 10) {

@@ -8,52 +8,61 @@
 </head>
 <body>
     <p><a href="/index.html">Volver</a></p>
-    <h1>Inicio de Sesión con 3 intentos</h1>
+    <h1>Juego de adivinación [Remake] <a style="font-size: medium;">(implementación de arrays y randomizadores)</a></h1>
     <form id="miForm" onsubmit="return false">
-        <label for="username">Ingrese su nombre de usuario (aluragale): </label>
-        <input type="text" name="username" id="username">
-        <br><br>
-        <label for="password">Ingrese su contraseña (supersecreto): </label>
-        <input type="text" name="password" id="password">
-        <br><br>
-        <button id="boton" onclick="iniciarSesion();">Iniciar sesión</button>
-        <br><br>
+        <label for="num">Ingrese el número candidato: </label>
+        <input type="text" name="num" id="num">
+        <br><br>    
+        <button id="boton" onclick="verificar();">Adivinar</button>
     </form>
     <br><hr><br>
     <div id="mensaje"></div>
 
 <script>
     const form = document.getElementById("miForm");
-    const registeredUser = "aluragale";
-    const registeredPass = "supersecreto";
-    const intentos = 3;
-    let contador = 1;
+    const mensaje = document.getElementById("mensaje");
+    let secretos = [];
+    secretos = sortearNum(4);
 
-    function trackingIntentos(user, pass) {
-        while (contador <= intentos) {
-            if (registeredPass === pass && registeredUser === user) {
-                alert(`Bienvenido, ${user}.`);
-                contador = 1;
-                break;
-            } else {
-                alert("Inicio de sesión fallido, por favor intente nuevamente.");
+    function sortearNum(cantidad) {
+        let contador = 1;
+        while (contador <= cantidad) {
+            let numAleatorio = Math.floor(Math.random() * (11 - 1)) + 1;
+            let encontrado = false;
+            for (let posicion = 0; posicion < secretos.length; posicion++) {
+                if (numAleatorio == secretos[posicion]) {
+                    encontrado = true;
+                    break;
+                }
+            }
+            if (encontrado == false) {
+                secretos.push(numAleatorio);
                 contador++;
+            }
+        }
+        return secretos;
+    }
+    console.log(secretos);
+
+    function verificar() {
+        const num = document.getElementById("num").value;
+        let encontrado = false;
+        for (let posicion = 0; posicion < secretos.length; posicion++) {
+            if (parseInt(num) == secretos[posicion]) {
+                mensaje.innerHTML = "Usted acertó.";
+                encontrado = true;
                 break;
             }
         }
-    }
-
-    function iniciarSesion() {
-        const user = document.getElementById("username").value;
-        const pass = document.getElementById("password").value;
-        if (contador > intentos) {
-            alert("Excediste el límite de intentos. Contacte con soporte.");
-        } else {
-            trackingIntentos(user, pass);
+        if (encontrado == false) {
+            mensaje.innerHTML = "Usted erró.";
         }
         form.reset();
     }
-</script>
+
+
+
+    
 </script>
 </body>
 </html>
