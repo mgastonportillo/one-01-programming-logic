@@ -10,11 +10,11 @@
     <p><a href="/index.html">Volver</a></p>
     <h1>¿Puedes conducir?</h1>
     <form id="miForm" onsubmit="return false">
-        <label for="edad">¿Tienes 18 años o más? (y/n)</label>
-        <input type="text" name="edad" id="edad">
+        <label for="edad">¿Tienes 18 años o más?</label>
+        <input type="text" name="edad" id="edad" placeholder="Ej.: si, no, s, n">
         <br><br>
-        <label for="licencia">¿Tienes licencia de conducir? (y/n)</label>
-        <input type="text" name="licencia" id="licencia">
+        <label for="licencia">¿Tienes licencia de conducir?</label>
+        <input type="text" name="licencia" id="licencia" placeholder="Ej.: si, no, s, n">
         <br><br>
         <button id="boton" onclick="verificar();">Verificar</button>
     </form>
@@ -28,11 +28,27 @@
     function verificar() {
         const edad = document.getElementById("edad").value;
         const lic = document.getElementById("licencia").value;
-        if (edad === "y" && lic === "y") {
-            resultado.innerHTML = "Sí puedes conducir.";
-        } else {
-            resultado.innerHTML = "No puedes conducir.";
-        }
+        let afirmativo = ["y", "yes", "si", "sí", "s"];
+        let negativo = ["n", "no"];
+        let afirmativoUp = afirmativo.map(i => i.toUpperCase());
+        let afirmativoCap = afirmativo.map(i => i.charAt(0).toUpperCase() + i.slice(1).toLowerCase());
+        let negativoUp = negativo.map(i => i.toUpperCase());
+        let negativoCap = negativo.map(i => i.charAt(0).toUpperCase() + i.slice(1).toLowerCase());
+        afirmativo = afirmativo.concat(afirmativoUp, afirmativoCap);
+        negativo = negativo.concat(negativoUp, negativoCap);
+        console.log(afirmativo);
+        console.log(afirmativo.includes(edad));
+        console.log(negativo.includes(edad));
+        console.log(negativo);
+        console.log(afirmativo.includes(lic));
+        console.log(negativo.includes(lic));
+            if ((afirmativo.includes(edad) === true) && (afirmativo.includes(lic) === true)) {
+                resultado.innerHTML = "Sí puedes conducir.";
+            } else if ((negativo.includes(edad) === true) || (negativo.includes(lic) === true)) {
+                resultado.innerHTML = "No puedes conducir.";
+            } else {
+                resultado.innerHTML = "Por favor revise sus respuestas e intente nuevamente. El programa sólo acepta respuestas sencillas.";
+            }
         form.reset();
     }
 </script>
