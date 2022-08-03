@@ -35,13 +35,7 @@
         let negativoUp = negativo.map(i => i.toUpperCase());
         let negativoCap = negativo.map(i => i.charAt(0).toUpperCase() + i.slice(1).toLowerCase());
         afirmativo = afirmativo.concat(afirmativoUp, afirmativoCap);
-        negativo = negativo.concat(negativoUp, negativoCap);
-        console.log(afirmativo);
-        console.log(afirmativo.includes(edad));
-        console.log(negativo.includes(edad));
-        console.log(negativo);
-        console.log(afirmativo.includes(lic));
-        console.log(negativo.includes(lic));
+        negativo = negativo.concat(negativoUp, negativoCap)
             if ((afirmativo.includes(edad) === true) && (afirmativo.includes(lic) === true)) {
                 resultado.innerHTML = "Sí puedes conducir.";
             } else if ((negativo.includes(edad) === true) || (negativo.includes(lic) === true)) {
