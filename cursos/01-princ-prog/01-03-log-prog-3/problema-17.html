@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problema #17</title>
+</head>
+<body>
+    <p><a href="/index.html">Volver</a></p>
+    <h1>Bandera personalizada: Terrortina</h1>
+    <hr><br>
+    <canvas style="margin-left:20px;" width="600" height="400"></canvas>
+
+<script>
+    const pantalla = document.querySelector("canvas");
+    const pincel = pantalla.getContext("2d");
+
+    pincel.fillStyle = "black";
+    pincel.fillRect(0, 0, 600, 400);
+
+    pincel.fillStyle = "red";
+    pincel.beginPath();
+    pincel.moveTo(600,0);
+    pincel.lineTo(600,400);
+    pincel.lineTo(0,400);
+    pincel.fill();
+
+    pincel.fillStyle = "red";
+    pincel.beginPath();
+    pincel.moveTo(50,50);
+    pincel.lineTo(100,50);
+    pincel.lineTo(75,75);
+    pincel.fill();
+
+    pincel.fillStyle = "red";
+    pincel.beginPath();
+    pincel.moveTo(60,50);
+    pincel.lineTo(150,150);
+    pincel.lineTo(75,75);
+    pincel.fill();
+
+    pincel.fillStyle = "red";
+    pincel.beginPath();
+    pincel.moveTo(150,50);
+    pincel.lineTo(200,50);
+    pincel.lineTo(175,75);
+    pincel.fill();
+
+    pincel.fillStyle = "red";
+    pincel.beginPath();
+    pincel.moveTo(160,50);
+    pincel.lineTo(250,150);
+    pincel.lineTo(175,75);
+    pincel.fill();
+
+    pincel.fillStyle = "white";
+    pincel.beginPath();
+    pincel.arc(500, 300, 50, 0, 2*3.14);
+    pincel.fill();
+
+    pincel.fillStyle = "white";
+    pincel.beginPath();
+    pincel.arc(500, 175, 25, 0, 2*3.14);
+    pincel.fill();
+
+    pincel.fillStyle = "white";
+    pincel.beginPath();
+    pincel.arc(375, 300, 25, 0, 2*3.14);
+    pincel.fill();
+
+    pincel.fillStyle = "black";
+    pincel.beginPath();
+    pincel.arc(500, 175, 15, 0, 2*3.14);
+    pincel.fill();
+
+    pincel.fillStyle = "black";
+    pincel.beginPath();
+    pincel.arc(375, 300, 15, 0, 2*3.14);
+    pincel.fill();
+
+</script>
+</body>
+</html>

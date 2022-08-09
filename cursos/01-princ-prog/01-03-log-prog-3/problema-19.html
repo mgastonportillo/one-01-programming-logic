@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problema #18</title>
+</head>
+<body>
+    <p><a href="/index.html">Volver</a></p>
+    <h1>Escuadra</h1>
+    <hr><br>
+    <canvas style="margin-left:20px;" width="500" height="500"></canvas>
+
+<script>
+    
+    const pantalla = document.querySelector("canvas");
+    const pincel = pantalla.getContext("2d");    
+    pincel.fillStyle = "grey";
+    pincel.fillRect(0,0,600,400); 
+
+    function mostrarMensaje(evento) {
+        const x = evento.pageX - pantalla.offsetLeft;
+        const y = evento.pageY - pantalla.offsetTop;
+        let d = new Date(); 
+        let hora = checkTime(d.getHours()) + ":" + checkTime(d.getMinutes()) + ":" + checkTime(d.getSeconds());
+        //Verifica si el número de las horas, minutos o segundos, tiene un solo dígito, 
+        //caso positivo le adiciona el cero en la frente para obtener el formato deseado 00:00:00
+        function checkTime(i){
+            if (i<10){
+                i="0" + i;
+            }
+            return i;
+        }
+
+        alert("La hora es: " + hora + " y las coordenadas son: x=" + x + ", y=" + y);
+    }
+
+    pantalla.onclick = mostrarMensaje;
+
+</script>
+</body>
+</html>
