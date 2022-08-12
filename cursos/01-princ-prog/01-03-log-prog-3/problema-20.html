@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problema #20</title>
+    <style>
+        .contenedor {display: flex;}
+        #aciertos {margin-left: 20px; font-size: x-large; color: green; font-weight: bold;}
+        #numAciertos {margin-left: 20px; font-size: x-large; font-weight: bold;}
+        #fallos {margin-left: 20px; font-size: x-large; color: red; font-weight: bold;}
+        #numFallos {margin-left: 20px; font-size: x-large; font-weight: bold;}
+        .text {margin-left: 20px}
+    </style>
+</head>
+<body>
+    <p><a href="/index.html">Volver</a></p>
+    <h1>Juego "Tiro al blanco"</h1>
+    <hr><br>
+    <div class="contenedor">
+        <canvas style="margin-left:20px;" width="500" height="500"></canvas>
+        <div>
+            <span id="aciertos">Aciertos: </span><span id="numAciertos">0</span><br>
+            <span id="fallos">Fallos: </span><span id="numFallos">0</span>
+            <br>
+            <p class="text">(Debes acertar en el punto rojo central)</p>
+        </div>
+    </div>
+    
+
+<script>
+    const aciertos = document.getElementById("numAciertos");
+    const fallos = document.getElementById("numFallos");
+    const pantalla = document.querySelector("canvas");
+    const pincel = pantalla.getContext("2d");
+    let acierto = 0;
+    let fallo = 0;
+    let x = 0;
+    let y = 0;
+    let xRandom = 0;
+    let yRandom = 0;
+
+    crearLienzo();
+    crearRecuadro();
+
+    function crearLienzo() {
+        pincel.clearRect(0, 0, 500, 500);
+        pincel.fillStyle = "white";
+        pincel.fillRect(0, 0, 500, 500);
+    }
+
+    function crearRecuadro() {
+        pincel.lineWidth = 10;
+        pincel.strokeStyle = "black";
+        pincel.strokeRect(0, 0, 500, 500);
+    }
+
+    function crearCircumferencia(x, y, radio, color) {
+        pincel.fillStyle = color;
+        pincel.beginPath();
+        pincel.arc(x,y,radio,0,2 * Math.PI);
+        pincel.fill();
+    }
+
+    function crearObjetivo() {
+        crearCircumferencia(x,y,30,"red");
+        crearCircumferencia(x,y,20,"white");
+        crearCircumferencia(x,y,10,"red");
+    }
+
+    function sortearPosicion(max) {
+        return Math.floor(Math.random() * ((max - 35) - (35)) + 35);
+    }
+
+    setInterval(() => {
+        crearLienzo();
+        x = sortearPosicion(500);
+        y = sortearPosicion(500);
+        crearObjetivo();
+        crearRecuadro();
+    }, (1000));
+
+    function disparar(evento) {
+        xRandom = evento.pageX - pantalla.offsetLeft;
+        yRandom = evento.pageY - pantalla.offsetTop;
+        if ((x < xRandom + 10) &&
+            (x > xRandom - 10) &&
+            (y < yRandom + 10) &&
+            (y > yRandom - 10)) {
+            acierto++;
+            aciertos.innerHTML = `${acierto}`;
+        } else {
+            fallo++;
+            fallos.innerHTML = `${fallo}`;
+        }
+    }
+
+    pantalla.onclick = disparar;
+
+</script>
+</body>
+</html>

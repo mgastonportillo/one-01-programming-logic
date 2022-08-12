@@ -4,39 +4,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Problema #18</title>
+    <title>Problema #19</title>
 </head>
 <body>
     <p><a href="/index.html">Volver</a></p>
-    <h1>Escuadra</h1>
+    <h1>Dibujar punto de color en canvas</h1>
     <hr><br>
     <canvas style="margin-left:20px;" width="500" height="500"></canvas>
 
 <script>
-    
     const pantalla = document.querySelector("canvas");
-    const pincel = pantalla.getContext("2d");    
-    pincel.fillStyle = "grey";
-    pincel.fillRect(0,0,600,400); 
+    const pincel = pantalla.getContext("2d");
+    let coloresArcoIris = ["ef3624", "ffc10e", "fee101", "54b846", "46aee3", "3b54a6", "383996"];
+    let indice = -1;
 
-    function mostrarMensaje(evento) {
-        const x = evento.pageX - pantalla.offsetLeft;
-        const y = evento.pageY - pantalla.offsetTop;
-        let d = new Date(); 
-        let hora = checkTime(d.getHours()) + ":" + checkTime(d.getMinutes()) + ":" + checkTime(d.getSeconds());
-        //Verifica si el número de las horas, minutos o segundos, tiene un solo dígito, 
-        //caso positivo le adiciona el cero en la frente para obtener el formato deseado 00:00:00
-        function checkTime(i){
-            if (i<10){
-                i="0" + i;
-            }
-            return i;
+    pincel.fillStyle = "white";
+    pincel.fillRect(0, 0, 500, 500);
+    pincel.lineWidth = 10;
+    pincel.strokeStyle = "black";
+    pincel.strokeRect(0, 0, 500, 500);
+
+    function arcoIris() {
+        if (indice < coloresArcoIris.length-1) {
+            indice++;
+        } else {
+            indice = 0;
         }
-
-        alert("La hora es: " + hora + " y las coordenadas son: x=" + x + ", y=" + y);
     }
 
-    pantalla.onclick = mostrarMensaje;
+    function dibujarPunto(evento) {
+        arcoIris();
+        let x = evento.pageX - pantalla.offsetLeft;
+        let y = evento.pageY - pantalla.offsetTop;
+        console.log(coloresArcoIris[indice]);
+        pincel.fillStyle = `#${coloresArcoIris[indice]}`;
+        pincel.beginPath();
+        pincel.arc(x, y, 10, 0, 2 * 3.14);
+        pincel.fill();
+        console.log(`${x}, ${y}`);
+    }
+
+    pantalla.onclick = dibujarPunto;
+    
 
 </script>
 </body>
