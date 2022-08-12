@@ -36,7 +36,6 @@
         arcoIris();
         let x = evento.pageX - pantalla.offsetLeft;
         let y = evento.pageY - pantalla.offsetTop;
-        console.log(coloresArcoIris[indice]);
         pincel.fillStyle = `#${coloresArcoIris[indice]}`;
         pincel.beginPath();
         pincel.arc(x, y, 10, 0, 2 * 3.14);
